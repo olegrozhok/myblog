@@ -18,5 +18,14 @@
             <h3><a href="">My second post</a></h3>
             <strong><p>Dasha amo valde!</p></strong>
         </div>
+        <br>
+        {% for post in posts %}
+            <div>
+                <em><p>published: {{ post.published_date }}</p></em>
+                <h3><a href="">{{ post.title }}</a></h3>
+                <strong><p>{{ post.text|linebreaksbr }}</p></strong>
+            </div>
+        {% endfor %}
+        </div>
     </body>
 </html>
