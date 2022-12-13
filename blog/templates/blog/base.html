@@ -10,7 +10,11 @@
     <body>
         <div class="page-header">
             {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus" style="color: #770077;"></span></a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit" style="color: #770077;"></span></a>
+                <h2 class="top-menu" style="color: #770077;">Hello {{ user.username }} (<a href="{% url 'logout' %}">Log out</a>)</h2>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock" style="color: #770077;"></span></a>
             {% endif %}
             <h1><a href="/">Oleg's Blog</a></h1>
         </div>
