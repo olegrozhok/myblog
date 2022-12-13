@@ -12,9 +12,32 @@
         </div>
             {% else %}
             <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}" style="color: #770077">Publish</a>
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil" style="color: #770077;"></span></a>
             <a class="btn btn-default" href="{% url 'post_remove_draft' pk=post.pk %}"><span class="glyphicon glyphicon-remove" style="color: #770077;"></span></a>
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
+        <hr>
+        {% for comment in post.comments.all %}
+            {% if user.is_authenticated or comment.approved_comment %}
+            <div class="comment">
+                <div class="date" >
+                    {{ comment.created_date }}
+                    {% if not comment.approved_comment %}
+                            <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove" style="color: #770077"></span></a>
+                            <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok" style="color: #770077"></span></a>
+                    {% endif %}
+                    {% if user.is_authenticated and comment.approved_comment %}
+                            <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove" style="color: #770077"></span></a>
+                    {% endif %}
+                </div>
+                <strong>{{ comment.author }}</strong>
+                <p>{{ comment.text|linebreaks }}</p>
+            </div>
+            {% endif %}
+        {% empty %}
+        <p>No comments here yet :(</p>
+        {% endfor %}
     </div>
+<a class="btn btn-default" style="color: #770077" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 {% endblock %}

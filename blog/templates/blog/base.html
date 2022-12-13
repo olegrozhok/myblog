@@ -14,7 +14,7 @@
                 <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit" style="color: #770077;"></span></a>
                 <h2 class="top-menu" style="color: #770077;">Hello {{ user.username }} (<a href="{% url 'logout' %}">Log out</a>)</h2>
             {% else %}
-                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock" style="color: #770077;"><h2>Log in</h2></span></a>
+                <h2 class="top-menu" style="color: #828282"><a href="{% url 'login' %}"><span class="glyphicon glyphicon-lock" style="color: #770077;"></span>Log in</a></h2>
             {% endif %}
             <h1><a href="/">Oleg's Blog</a></h1>
         </div>
