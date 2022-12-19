@@ -18,6 +18,7 @@
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
         <hr>
+        <p><br>Comments:</p>
         {% for comment in post.comments.all %}
             {% if user.is_authenticated or comment.approved_comment %}
             <div class="comment">
@@ -32,7 +33,7 @@
                     {% endif %}
                 </div>
                 <strong>{{ comment.author }}</strong>
-                <p>{{ comment.text|linebreaks }}</p><br>
+                <p>{{ comment.text|linebreaks }}</p>
             </div>
             {% endif %}
         {% empty %}
