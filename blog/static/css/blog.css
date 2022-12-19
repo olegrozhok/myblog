@@ -48,40 +48,86 @@ h1, h2, h3, h4 {
 .comment {
 }
 
-.limiter {
-max-height: 150px;
-overflow: hidden;
-position: relative;
+.text_hide_wrap {
+    max-width: 700px;
 }
-.limiter .bottom {
-position: sticky;
-bottom: 0;
-background: linear-gradient(to bottom, rgb(0 190 200 / 0%), rgb(0 190 200)99%);
-width: 100%;
-height: 40px;
-opacity: 1;
-transition: 0.6s;
+
+.item_text {
+    width: 100%;
+    padding: 20px;
 }
-.read-more-checker {
-opacity: 0;
-position: absolute;
+
+.item_text p {
+    margin-bottom: 20px;
 }
-.read-more-checker:checked ~ .limiter {
-max-height: none;
+
+.io_item {
+    width: 100%;
+    padding-bottom: 20px;
 }
-.read-more-checker:checked ~ .limiter .bottom {
-opacity: 0;
-transition: 0.3s;
+
+.io_button_wrap {
+    text-align: center;
+    margin-top: 10px;
 }
-.read-more-checker ~ .read-more-button:before {
-content: "Read more »";
+
+.io_button {
+    display: inline-block;
+    border: 1px solid #770077;
+    width: auto;
+    padding: 0 20px;
+    line-height: 32px;
+    vertical-align: top;
+    text-transform: uppercase;
+    color: #770077 !important;
+    font-size: 10pt;
+    border-radius: 25px;
+    cursor: pointer;
 }
-.read-more-checker:checked ~ .read-more-button:before {
-content: "Read less «";
+
+a.io_button:hover {
+    text-decoration: none;
 }
-.read-more-button {
-cursor: pointer;
-display: inline-block;
-color: #777;
-text-decoration: underline;
+
+.io_item .btn_close {
+    display: none;
+}
+
+.io_item .btn_open {
+    display: inline-block;
+}
+
+.io_item.open .btn_close {
+    display: inline-block;
+}
+
+.io_item.open .btn_open {
+    display: none;
+}
+
+.io_trans {
+    width: inherit;
+    position: absolute;
+    height: 40px;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0, 190, 200, 0) 0%, rgba(0, 190, 200, 0.3) 100%);
+    transition: 1s;
+}
+
+.io_item.open .io_trans {
+    height: 0;
+    transition: 1s;
+}
+
+.io_item_wrap {
+    position: relative;
+    overflow: hidden;
+    max-height: 100px;
+    width: inherit;
+    transition: max-height 0.5;
+}
+.io_item.open .io_item_wrap {
+    max-height: 999px !important;
+    transition: max-height 1s;
 }

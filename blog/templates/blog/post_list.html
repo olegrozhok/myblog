@@ -8,17 +8,12 @@
             </div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <img src="{{ post.cover.url}}">
-            <input type="checkbox" class="read-more-checker" id="read-more-checker" />
-            <div class="limiter">
-                    <p>{{ post.text|linebreaksbr }}</p>
-             <div class="bottom"></div>
+            <div class="text_hide_wrap">
+                <div class="item_text">
+                <p>{{ post.text|linebreaksbr }}</p>
+                </div>
             </div>
-            <br>
-            <label for="read-more-checker" class="read-more-button"></label>
-            <br><br>
             <a href="{% url 'post_detail' pk=post.pk %}" style="color: #828282" >Comments: {{ post.approved_comments.count }}</a>
         </div>
-
-
     {% endfor %}
 {% endblock %}
