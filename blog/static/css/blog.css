@@ -128,6 +128,6 @@ a.io_button:hover {
     transition: max-height 0.5;
 }
 .io_item.open .io_item_wrap {
-    max-height: 2000px !important;
+    max-height: 5000px !important;
     transition: max-height 1s;
 }
