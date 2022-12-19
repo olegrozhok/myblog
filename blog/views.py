@@ -4,6 +4,7 @@ from .models import Post, Comment
 from .forms import PostForm, CommentForm, SignUpForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
+from django.http import HttpResponse
 
 
 @login_required
@@ -41,7 +42,7 @@ def post_detail(request, pk):
 @login_required
 def post_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -50,6 +51,9 @@ def post_new(request):
     else:
         form = PostForm()
         return render(request, 'blog/post_edit.html', {'form': form})
+
+    def post_detail(request):
+        return HttpResponse('cover uploaded')
 
 
 @login_required

@@ -16,6 +16,7 @@
             <a class="btn btn-default" href="{% url 'post_remove_draft' pk=post.pk %}"><span class="glyphicon glyphicon-remove" style="color: #770077;"></span></a>
         {% endif %}
         <h1>{{ post.title }}</h1>
+        <img src="{{ post.cover.url}}">
         <p>{{ post.text|linebreaksbr }}</p>
         <hr>
         <p><br>Comments:</p>

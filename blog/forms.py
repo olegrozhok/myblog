@@ -15,7 +15,7 @@ class SignUpForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'text',)
+        fields = ('title', 'cover', 'text',)
 
 
 class CommentForm(forms.ModelForm):
